@@ -141,6 +141,7 @@ struct WordQuizView: View {
     @State private var selectedDifficulty: DifficultyLevel? = nil
     @State private var showQuiz = false
     @State private var showPremiumAlert = false
+    @State private var showPayment = false
     
     var body: some View {
         NavigationStack {
@@ -162,11 +163,14 @@ struct WordQuizView: View {
         .alert("프리미엄 기능", isPresented: $showPremiumAlert) {
             Button("취소", role: .cancel) { }
             Button("구매하기") {
-                // 결제 로직 구현
                 print("프리미엄 구매 페이지로 이동")
+                showPayment = true
             }
         } message: {
             Text("중급과 고급 단계는 프리미엄 구독이 필요합니다.\n더 많은 단어를 학습하고 실력을 향상시켜보세요!")
+        }
+        .sheet(isPresented: $showPayment) {
+            RevenueCatView()
         }
     }
 }

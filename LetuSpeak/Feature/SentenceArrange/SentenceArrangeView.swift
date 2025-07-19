@@ -137,6 +137,7 @@ struct SentenceArrangeView: View {
     @State private var selectedDifficulty: SentenceDifficulty? = nil
     @State private var showGame = false
     @State private var showPremiumAlert = false
+    @State private var showPayment = false
     
     var body: some View {
         NavigationStack {
@@ -159,9 +160,13 @@ struct SentenceArrangeView: View {
             Button("취소", role: .cancel) { }
             Button("구매하기") {
                 print("프리미엄 구매 페이지로 이동")
+                showPayment = true
             }
         } message: {
             Text("중급과 고급 단계는 프리미엄 구독이 필요합니다.\n더 복잡한 문장으로 실력을 향상시켜보세요!")
+        }
+        .sheet(isPresented: $showPayment) {
+            RevenueCatView()
         }
     }
 }
