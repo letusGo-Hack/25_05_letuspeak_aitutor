@@ -6,114 +6,52 @@
 //
 
 import SwiftUI
-import Charts
 
-/// 발음 교정 화면
 struct SpeakView: View {
-    @State private var chatMessages: [ChatMessage] = []
-    @State private var isTranscribing = false
-    @State private var speaker: TextSpeaker
-    
-    @State private var speechTranscriber: SpokenWordTranscriber
-    @State private var recorder: Recorder
-    
-    init() {
-        let messages = Binding<[ChatMessage]>(
-            get: { [] },
-            set: { _ in }
+    let partners: [ConversationPartner] = [
+        .init(
+            name: "어스고",
+            avatar: "남자",
+            personality: .init(
+                roleDescription: "정말 따뜻하게 모든 대답에 공감해주는 사람",
+                tone: "엄청 따뜻한 톤",
+                interactionStyle: "질문을 자주 던지는 스타일"
+            ),
+            utterance: .init(
+                rate: 0.5,
+                pitchMultiplier: 1.0,
+                postUtteranceDelay: 1.0,
+                volume: 1.0 
+            )
+        ),
+        .init(
+            name: "루시",
+            avatar: "여자",
+            personality: .init(
+                roleDescription: "논리적으로 설명을 잘 해주는 튜터",
+                tone: "단정하고 또렷한 말투",
+                interactionStyle: "유저가 이해할 때까지 반복 설명"
+            ),
+            utterance: .init()
         )
-        let transcriber = SpokenWordTranscriber(chatMessages: messages)
-        _speechTranscriber = State(initialValue: transcriber)
-        _recorder = State(initialValue: Recorder(transcriber: transcriber, chatMessages: messages))
-        _chatMessages = State(initialValue: [])
-        _speaker = State(initialValue: TextSpeaker())
-    }
+    ]
     
     var body: some View {
-        VStack {
-            ScrollViewReader { proxy in
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 12) {
-                        ForEach(chatMessages) { message in
-                            chatRow(message)
-                        }
-                    }
-                    .padding()
-                }
-                .onChange(of: chatMessages.count) {
-                    if let last = chatMessages.last {
-                        withAnimation {
-                            proxy.scrollTo(last.id, anchor: .bottom)
-                        }
-                        // TODO: - AI
-                        try? speaker.speak(last.text, utteranceSetting: .init())
+        NavigationStack {
+            List(partners) { partner in
+                NavigationLink(destination: SpeakDetailView(partner: partner)) {
+                    HStack {
+                        Text(partner.name)
+                        Spacer()
+                        Text(partner.personality.tone)
+                            .font(.caption)
+                            .foregroundColor(.gray)
                     }
                 }
             }
-            
-            Button(action: {
-                Task {
-                    await handleTranscriptionToggle()
-                }
-            }) {
-                Text(isTranscribing ? "Stop Speaking" : "Start Speaking")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(isTranscribing ? Color.red : Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-            }
-            .padding(.horizontal)
-            .padding(.bottom, 20)
-        }
-        .onAppear {
-            try? recorder.setUpAudioSession()
-            // 실제 chatMessages 바인딩 연결
-            let messages = Binding<[ChatMessage]>(
-                get: { self.chatMessages },
-                set: { self.chatMessages = $0 }
-            )
-            speechTranscriber.chatMessages = messages
-            recorder.chatMessages = messages
-        }
-        .navigationTitle("LetuSpeak")
-    }
-    
-    @ViewBuilder
-    private func chatRow(_ message: ChatMessage) -> some View {
-        VStack(alignment: (message.sender == .user) ? HorizontalAlignment.trailing : HorizontalAlignment.leading, spacing: 4) {
-            Text(message.text)
-                .font(.body)
-                .padding(10)
-                .background(message.sender == .user ? Color.blue.opacity(0.1) : Color.gray.opacity(0.1))
-                .cornerRadius(8)
-                .frame(maxWidth: .infinity, alignment: (message.sender == .user) ? .trailing : .leading)
-            
-            if let translated = message.translatedText {
-                Text(translated)
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                    .frame(maxWidth: .infinity, alignment: (message.sender == .user) ? .trailing : .leading)
-            }
-        }
-        .id(message.id)
-    }
-    
-    private func handleTranscriptionToggle() async {
-        isTranscribing.toggle()
-        do {
-            if isTranscribing {
-                try await recorder.startLiveTranscription()
-            } else {
-                try await recorder.stopTranscription()
-            }
-        } catch {
-            print("⚠️ Transcription error: \(error)")
-            isTranscribing = false
+            .navigationTitle("상황 선택")
         }
     }
 }
 
-#Preview {
-    SpeakView()
-}
+

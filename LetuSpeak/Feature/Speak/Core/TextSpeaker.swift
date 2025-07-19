@@ -27,6 +27,7 @@ final class TextSpeaker: NSObject {
         utterance.voice = .init(identifier: utteranceSetting.voice.rawValue)
         utterance.pitchMultiplier = utteranceSetting.pitchMultiplier
         utterance.rate = utteranceSetting.rate
+        utterance.volume = utteranceSetting.volume
         synthesizer.stopSpeaking(at: .immediate)
         synthesizer.speak(utterance)
     }

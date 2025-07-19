@@ -17,7 +17,6 @@ class Recorder {
     
     var chatMessages: Binding<[ChatMessage]>
     
-    var file: AVAudioFile?
     
     init(transcriber: SpokenWordTranscriber, chatMessages: Binding<[ChatMessage]>) {
         audioEngine = AVAudioEngine()
@@ -80,7 +79,11 @@ class Recorder {
     #if os(iOS)
     func setUpAudioSession() throws {
         let audiosSession = AVAudioSession.sharedInstance()
-        try audiosSession.setCategory(.playAndRecord, mode: .spokenAudio)
+        try audiosSession.setCategory(
+            .playAndRecord,
+            mode: .spokenAudio,
+            options: [.defaultToSpeaker, .interruptSpokenAudioAndMixWithOthers]
+        )
         try audiosSession.setActive(true, options: .notifyOthersOnDeactivation)
     }
     #endif

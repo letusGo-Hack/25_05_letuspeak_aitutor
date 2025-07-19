@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CustomUtterance: Sendable {
+struct CustomUtterance: Sendable, Identifiable {
     var rate: Float
     var pitchMultiplier: Float
     var postUtteranceDelay: Double

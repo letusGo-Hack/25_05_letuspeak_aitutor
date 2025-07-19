@@ -32,6 +32,18 @@ struct ChatMessage: Identifiable {
         self.translatedText = await translateToKorean(text)
     }
     
+    init(
+        sender: Sender,
+        text: String,
+        translatedText: String,
+        timestamp: Date
+    ) {
+        self.sender = sender
+        self.text = text
+        self.translatedText = translatedText
+        self.timestamp = timestamp
+    }
+    
     func translateToKorean(_ english: String) async -> String {
         let session = LanguageModelSession()
         let prompt = """
