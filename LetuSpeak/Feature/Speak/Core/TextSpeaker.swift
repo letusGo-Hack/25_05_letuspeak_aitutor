@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import AVFAudio
+internal import AVFAudio
 import SwiftUI
 
 @MainActor
@@ -24,7 +24,7 @@ final class TextSpeaker: NSObject {
     ) throws {
         guard let text else { throw TTSError.TextEmpty }
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = .init(identifier: utteranceSetting.voice.rawValue)
+        utterance.voice = utteranceSetting.voice
         utterance.pitchMultiplier = utteranceSetting.pitchMultiplier
         utterance.rate = utteranceSetting.rate
         utterance.volume = utteranceSetting.volume

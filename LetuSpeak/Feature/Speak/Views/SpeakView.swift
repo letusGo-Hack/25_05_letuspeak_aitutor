@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+internal import AVFAudio
 
 struct SpeakView: View {
     let partners: [ConversationPartner] = [
@@ -21,7 +22,8 @@ struct SpeakView: View {
                 rate: 0.5,
                 pitchMultiplier: 1.0,
                 postUtteranceDelay: 1.0,
-                volume: 1.0 
+                volume: 1.0,
+                voice: AVSpeechSynthesisVoice.init(language: "en-KR")!
             )
         ),
         .init(
@@ -32,7 +34,13 @@ struct SpeakView: View {
                 tone: "단정하고 또렷한 말투",
                 interactionStyle: "유저가 이해할 때까지 반복 설명"
             ),
-            utterance: .init()
+            utterance: .init(
+                rate: 0.5,
+                pitchMultiplier: 1.0,
+                postUtteranceDelay: 1.0,
+                volume: 1.0,
+                voiceConcept: Voice.Eddy
+            )
         )
     ]
     
