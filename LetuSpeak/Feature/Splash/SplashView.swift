@@ -24,8 +24,8 @@ struct SplashView: View {
             LinearGradient(
                 gradient: Gradient(colors: [
                     Color.blue.opacity(0.8),
-                    Color.purple.opacity(0.6),
-                    Color.pink.opacity(0.4)
+                    Color.teal.opacity(0.6),
+                    Color.cyan.opacity(0.4)
                 ]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -58,6 +58,7 @@ struct SplashView: View {
                 // 앱 제목
                 Text("LetuSpeak")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .font(.system(size: 40, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                     .offset(y: titleOffset)
                     .opacity(titleOpacity)
@@ -76,9 +77,8 @@ struct SplashView: View {
             }
         }
         .fullScreenCover(isPresented: $navigateToMain) {
-            ContentView() // 메인 화면으로 이동
+            MainTabView() // 메인 화면으로 이동
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(.white)
         }
     }
     
