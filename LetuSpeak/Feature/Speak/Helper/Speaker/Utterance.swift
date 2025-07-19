@@ -6,13 +6,14 @@
 //
 
 import Foundation
+internal import AVFAudio
 
-struct CustomUtterance: Sendable, Identifiable {
+struct CustomUtterance: Sendable {
     var rate: Float
     var pitchMultiplier: Float
     var postUtteranceDelay: Double
     var volume: Float
-    var voice: Voice
+    var voice: AVSpeechSynthesisVoice
     
     init(
         rate: Float = 0.5,
@@ -20,6 +21,20 @@ struct CustomUtterance: Sendable, Identifiable {
         postUtteranceDelay: Double = 1.0,
         volume: Float = 1.0,
         voice: Voice = .siri_Aaron
+    ) {
+        self.rate = rate
+        self.pitchMultiplier = pitchMultiplier
+        self.postUtteranceDelay = postUtteranceDelay
+        self.volume = volume
+        self.voice = .init(identifier: voice.rawValue)!
+    }
+    
+    init(
+        rate: Float = 0.5,
+        pitchMultiplier: Float = 1.0,
+        postUtteranceDelay: Double = 1.0,
+        volume: Float = 1.0,
+        voice: AVSpeechSynthesisVoice
     ) {
         self.rate = rate
         self.pitchMultiplier = pitchMultiplier
