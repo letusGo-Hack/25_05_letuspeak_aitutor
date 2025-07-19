@@ -23,7 +23,7 @@ struct SpeakView: View {
                 pitchMultiplier: 1.0,
                 postUtteranceDelay: 1.0,
                 volume: 1.0,
-                voice: .init(language: "en-KR")!
+                voice: AVSpeechSynthesisVoice.init(language: "en-KR")!
             )
         ),
         .init(
@@ -39,7 +39,7 @@ struct SpeakView: View {
                 pitchMultiplier: 1.0,
                 postUtteranceDelay: 1.0,
                 volume: 1.0,
-                voice: .init(language: "en-KR")!
+                voiceConcept: Voice.Eddy
             )
         )
     ]

@@ -55,7 +55,7 @@ struct SpeakDetailView: View {
                         }
                         if case .partner(_) = last.sender {
                             print("partner")
-                            try? speaker.speak(last.text, utteranceSetting: .init())
+                            try? speaker.speak(last.text, utteranceSetting: self.partner.utterance)
                         } else {
                             print("user")
                             Task {
