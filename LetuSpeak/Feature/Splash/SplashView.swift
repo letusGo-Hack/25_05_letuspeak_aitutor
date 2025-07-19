@@ -76,7 +76,7 @@ struct SplashView: View {
             }
         }
         .fullScreenCover(isPresented: $navigateToMain) {
-            ContentView() // 메인 화면으로 이동
+            MainTabView() // 메인 화면으로 이동
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.white)
         }
