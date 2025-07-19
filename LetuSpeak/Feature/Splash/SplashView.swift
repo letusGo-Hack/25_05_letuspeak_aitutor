@@ -56,7 +56,7 @@ struct SplashView: View {
                 .opacity(logoOpacity)
                 
                 // 앱 제목
-                Text("English Master")
+                Text("LetuSpeak")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                     .offset(y: titleOffset)
