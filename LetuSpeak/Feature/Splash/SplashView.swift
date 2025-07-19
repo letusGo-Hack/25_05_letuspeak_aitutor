@@ -57,6 +57,7 @@ struct SplashView: View {
                 
                 // 앱 제목
                 Text("LetuSpeak")
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
                     .font(.system(size: 40, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                     .offset(y: titleOffset)
