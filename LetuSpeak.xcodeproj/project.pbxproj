@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C71FC9952E2B4E1400E63F82 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71FC9942E2B4E1400E63F82 /* StoreKit.framework */; };
+		C71FC9A32E2B5F4D00E63F82 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = C71FC9A22E2B5F4D00E63F82 /* RevenueCat */; };
+		C71FC9A52E2B5F4D00E63F82 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = C71FC9A42E2B5F4D00E63F82 /* RevenueCatUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A5A19D942E2B301D00252541 /* LetuSpeak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetuSpeak.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C71FC9942E2B4E1400E63F82 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +30,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71FC9A32E2B5F4D00E63F82 /* RevenueCat in Frameworks */,
+				C71FC9952E2B4E1400E63F82 /* StoreKit.framework in Frameworks */,
+				C71FC9A52E2B5F4D00E63F82 /* RevenueCatUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A19D962E2B301D00252541 /* LetuSpeak */,
+				C71FC9932E2B4E1400E63F82 /* Frameworks */,
 				A5A19D952E2B301D00252541 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +54,14 @@
 				A5A19D942E2B301D00252541 /* LetuSpeak.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C71FC9932E2B4E1400E63F82 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C71FC9942E2B4E1400E63F82 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,6 +84,8 @@
 			);
 			name = LetuSpeak;
 			packageProductDependencies = (
+				C71FC9A22E2B5F4D00E63F82 /* RevenueCat */,
+				C71FC9A42E2B5F4D00E63F82 /* RevenueCatUI */,
 			);
 			productName = LetuSpeak;
 			productReference = A5A19D942E2B301D00252541 /* LetuSpeak.app */;
@@ -94,6 +115,9 @@
 			);
 			mainGroup = A5A19D8B2E2B301D00252541;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C71FC9A12E2B5F4D00E63F82 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A5A19D952E2B301D00252541 /* Products */;
 			projectDirPath = "";
@@ -166,7 +190,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -227,7 +251,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -248,7 +272,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9Y3C29YBST;
+				DEVELOPMENT_TEAM = R8ZX684WX2;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -292,7 +316,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9Y3C29YBST;
+				DEVELOPMENT_TEAM = R8ZX684WX2;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -351,6 +375,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C71FC9A12E2B5F4D00E63F82 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C71FC9A22E2B5F4D00E63F82 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71FC9A12E2B5F4D00E63F82 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		C71FC9A42E2B5F4D00E63F82 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71FC9A12E2B5F4D00E63F82 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A5A19D8C2E2B301D00252541 /* Project object */;
 }

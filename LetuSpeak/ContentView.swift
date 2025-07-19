@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ProgressChartView()
+    ContentView()
 }
