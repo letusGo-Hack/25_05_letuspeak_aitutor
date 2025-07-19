@@ -25,22 +25,6 @@ struct SpeakView: View {
                 volume: 1.0,
                 voice: AVSpeechSynthesisVoice.init(language: "en-KR")!
             )
-        ),
-        .init(
-            name: "루시",
-            avatar: "여자",
-            personality: .init(
-                roleDescription: "논리적으로 설명을 잘 해주는 튜터",
-                tone: "단정하고 또렷한 말투",
-                interactionStyle: "유저가 이해할 때까지 반복 설명"
-            ),
-            utterance: .init(
-                rate: 0.5,
-                pitchMultiplier: 1.0,
-                postUtteranceDelay: 1.0,
-                volume: 1.0,
-                voiceConcept: Voice.Eddy
-            )
         )
     ]
     
