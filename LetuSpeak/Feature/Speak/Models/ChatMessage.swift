@@ -45,7 +45,7 @@ struct ChatMessage: Identifiable {
     }
     
     func translateToKorean(_ english: String) async -> String {
-        let session = LanguageModelSession()
+        let session = LanguageModelSession(guardrails: .developerProvided)
         let prompt = """
         다음 영어 문장을 한국어로 번역, 번역한 문장만 출력
         \(english)
