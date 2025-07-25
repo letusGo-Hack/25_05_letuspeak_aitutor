@@ -14,7 +14,7 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             // 메인 탭
-            ChartsView()
+            CharacterView()
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("메인")

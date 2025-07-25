@@ -50,6 +50,9 @@
             ReferencedContainer = "container:LetuSpeak.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../LetuSpeak/Feature/Charts/IAPDemo.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

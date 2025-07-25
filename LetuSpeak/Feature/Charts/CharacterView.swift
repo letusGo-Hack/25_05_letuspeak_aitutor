@@ -1,5 +1,5 @@
 //
-//  ChartsView.swift
+//  CharacterView.swift
 //  LetuSpeak
 //
 //  Created by Importants on 7/19/25.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// 학습 진척도 그래프 화면
-struct ChartsView: View {
+struct CharacterView: View {
     @State private var isSettingsActive = false
     
     let characters = (1...8).map { "Character_\($0)" }
