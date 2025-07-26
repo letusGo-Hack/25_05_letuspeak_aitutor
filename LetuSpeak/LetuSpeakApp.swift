@@ -15,7 +15,7 @@ struct LetuSpeakApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            RevenueCatView()
+            SplashView()
         }
     }
 }

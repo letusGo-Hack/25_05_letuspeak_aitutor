@@ -20,6 +20,14 @@ struct RevenueCatView: View {
         Button("Buy Coins") {
             purchase(productID: "coins_pack.ndcSample")
         }
+        Button("Subscribe Monthly") {
+            purchase(productID: "pro_monthly.ndcSample")
+        }
+        Text(isPro ? "Pro user!" : "Free user")
+            .foregroundStyle(isPro ? .green : .red)
+        Button("Check Sub Status") {
+            checkSubStatus()
+        }
     }
 //    var body: some View {
 //        VStack {
@@ -86,6 +94,19 @@ struct RevenueCatView: View {
                 }) ?? false
             } catch {
                 print("Failed to purchase \(error)")
+            }
+        }
+    }
+    
+    func checkSubStatus() {
+        Task {
+            do {
+                let info = try await Purchases.shared.customerInfo()
+                isPro = info.entitlements.active.contains(where: {
+                    $0.value.isActive
+                })
+            } catch {
+                print("Failed to fetch customer info \(error)")
             }
         }
     }
